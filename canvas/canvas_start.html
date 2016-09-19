@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas绘制星空</title>
+</head>
+<body>
+	<canvas id="canvas" style="display: block;margin: 20px auto;border:1px solid #ccc;"></canvas>
+</body>
+<script type="text/javascript">
+	window.onload=function(){
+		var canvas=document.getElementById('canvas');
+		var WIDTH=1000;
+		var HEIGHT=600;
+		canvas.width=WIDTH;
+		canvas.height=HEIGHT;
+		var colors=['gold','yellow'];
+		if(canvas){
+			var context=canvas.getContext('2d');
+			//var gradient=context.createLinearGradient(0,0,0,600);
+			var gradient=context.createRadialGradient(500,600,0,500,600,800);
+				gradient.addColorStop(1.0,'black');
+				gradient.addColorStop(0.0,'blue');
+				context.fillStyle=gradient;
+				context.fillRect(0,0,WIDTH,HEIGHT);
+
+			for (var i = 0; i < 200; i++) {
+				var outerRadius=Math.random()*10+5,
+				innerRadius=outerRadius/1.9,
+				width=Math.random()*WIDTH,
+				height=Math.random()*HEIGHT*0.65,
+				rotate=Math.random()*10*36,
+				color=colors[Math.ceil(Math.random()*10)%colors.length];
+
+				//控制星星与边界有重叠
+				width=width < outerRadius ? outerRadius : width;
+				width=(width+outerRadius) > WIDTH ? (WIDTH-outerRadius) : width;
+				height=height < outerRadius ? outerRadius : height;
+				height=(height+outerRadius) > HEIGHT ? (HEIGHT-outerRadius) : height;
+
+				drawStar(context,width,height,outerRadius,innerRadius,30,color);
+			};
+		}else{
+			console.log('浏览器不支持canvas，请更新浏览器！')
+		}
+
+	}
+
+	function drawStar(ctx,width,height,outerRadius,innerRadius,rotate,color){
+		ctx.beginPath();
+		for (var i = 0; i < 5; i++){
+			ctx.lineTo(Math.cos((18+i*72+rotate)*Math.PI/180)*outerRadius+width,
+						-Math.sin((18+i*72+rotate)*Math.PI/180)*outerRadius+height);
+			ctx.lineTo(Math.cos((54+i*72+rotate)*Math.PI/180)*innerRadius+width,
+						-Math.sin((54+i*72+rotate)*Math.PI/180)*innerRadius+height);
+		}
+		ctx.closePath();
+		ctx.strokeStyle=color;
+		ctx.fillStyle=color;
+		ctx.fill();
+		ctx.stroke();
+	}		
+</script>
+</html>

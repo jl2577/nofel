@@ -1,0 +1,50 @@
+@charset "utf-8";
+html{
+	font-size: 20px;
+	overflow-y: scroll;
+}
+/*建议使用rem为长度单位，并支持不同分辨率下*/
+@media only screen and (min-width: 320px){
+   html{font-size: 20px !important;}
+}
+@media only screen and (min-width: 350px){
+    html{font-size: 22.5px !important;}
+}
+@media only screen and (min-width: 365px){
+    html{font-size: 23px !important;}
+}
+@media only screen and (min-width: 375px){
+    html{font-size: 23.5px !important;}
+}
+@media only screen and (min-width: 390px){
+    html{font-size: 24.5px !important;}
+}
+@media only screen and (min-width: 400px){
+    html{font-size: 25px !important;}
+}
+@media only screen and (min-width: 428px){
+    html{font-size: 26.8px !important;}
+}
+@media only screen and (min-width: 432px){
+    html{font-size: 27.4px !important;}
+}
+@media only screen and (min-width: 481px){
+    html{font-size: 30px !important;}
+}
+}
+*{outline:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-user-select:none;}
+*:not(input):not(textarea){
+    -webkit-user-select: none;
+}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td { margin:0; padding:0; }
+body { background:#fff; color:#555; font-size:1rem; font-family: Verdana, Arial, Helvetica, sans-serif; }
+td,th,caption { font-size:1rem; }
+h1, h2, h3, h4, h5, h6 { font-weight:normal; font-size:100%; }
+address, caption, cite, code, dfn, em, strong, th, var { font-style:normal; font-weight:normal;}
+a { color:#555; text-decoration:none; }
+a:hover { text-decoration:underline; }
+img { border:none; }
+ol,ul,li { list-style:none; }
+input, textarea, select, button { font:1rem Verdana,Helvetica,Arial,sans-serif; }
+table { border-collapse:collapse; }
+

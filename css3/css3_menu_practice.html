@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+	<style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	body {
+		background-color: #ccc;
+		font-family: "Microsoft Yahei";
+	}
+	
+	.nav-wrap{
+		position: relative;
+		width: 200px;
+		height: 200px;
+		border: 2px dotted #000;
+		border-radius: 100%;
+		margin: 50px auto;
+	}
+
+	.nav-wrap .main-nav{
+		display: block;
+		position: absolute;
+		left: 50%;
+		top:50%;
+		width: 40px;
+		height: 40px;
+		background: #F02975;
+		/* transform: translate(-50%,-50%); */
+		-webkit-transform: translate(-50%,-50%);
+		   -moz-transform: translate(-50%,-50%);
+		    -ms-transform: translate(-50%,-50%);
+		     -o-transform: translate(-50%,-50%);
+		        transform: translate(-50%,-50%);
+		text-align: center;
+		line-height: 40px;
+		border-radius: 5px;
+		text-shadow :1px 1px 0 #000;
+		color:#fff;
+		cursor: pointer;
+	}
+	
+	.nav-wrap nav{
+		width: 100%;
+		height: 100%;
+		/* transition:all 0.5s ease-out; */
+		-webkit-transition: all 0.5s ease-out;
+		   -moz-transition: all 0.5s ease-out;
+		    -ms-transition: all 0.5s ease-out;
+		     -o-transition: all 0.5s ease-out;
+		        transition: all 0.5s ease-out;
+		/* transform:scale(0); */
+		-webkit-transform: scale(0);
+		   -moz-transform: scale(0);
+		    -ms-transform: scale(0);
+		     -o-transform: scale(0);
+		        transform: scale(0);
+		opacity: 0;
+	}
+	
+	.nav-wrap.active nav{
+		/* transform:scale(1); */
+		-webkit-transform: scale(1);
+		   -moz-transform: scale(1);
+		    -ms-transform: scale(1);
+		     -o-transform: scale(1);
+		        transform: scale(1);
+		opacity: 1;
+	}
+
+	.nav-item{
+		position: absolute;
+		display: inline-block;
+		width: 30px;
+		height: 30px;
+		background-color: blue;
+		text-align: center;
+		line-height: 30px;
+		border-radius: 5px;
+		/* transform: translate(-50%,-50%); */
+
+		-webkit-transform: translate(-50%,-50%);
+		   -moz-transform: translate(-50%,-50%);
+		    -ms-transform: translate(-50%,-50%);
+		     -o-transform: translate(-50%,-50%);
+		        transform: translate(-50%,-50%);
+	}
+
+	.one{
+		top:0;
+		left:0;
+	}
+	.two{
+		top:0;
+		left:200px;
+	}
+	.three{
+		top:200px;
+		left:200px;
+	}
+	.four{
+		top:200px;
+		left:0;
+	}
+	</style>
+</head>
+<body>
+	<div class="nav-wrap">
+		<nav>
+			<a class="nav-item ">1</a>
+			<a class="nav-item ">2</a>
+			<a class="nav-item ">3</a>
+			<a class="nav-item ">4</a>
+			<a class="nav-item ">5</a>
+			<a class="nav-item ">6</a>
+			<a class="nav-item ">7</a>
+			<a class="nav-item ">8</a>
+			<a class="nav-item ">9</a>
+			<a class="nav-item ">10</a>
+			<a class="nav-item ">11</a>
+			<a class="nav-item ">12</a>
+		</nav>
+		<a class="main-nav">点我</a>
+	</div>
+	<script>
+	var items=$('.nav-item');
+	$.each(items ,function(index,item){
+		//$(this).css({top:index*50+'px',left:index*50+'px'});		
+		var sAngle=0;
+		var eAngle=360;
+
+		//nav 容器下的的a标签的个数
+		var nav_a=$('.nav-wrap').find('nav a');
+
+		//每两个之间的角度
+		var angle=(eAngle-sAngle)/nav_a.length;
+
+		//圆半径
+		var r=$('.nav-wrap').width()/2;
+
+		//弧度
+		var radius=Math.PI/180;
+
+		var left=r+r*Math.cos((index*angle-60)*radius);
+		var top=r+r*Math.sin((index*angle-60)*radius);
+
+		item.style.top=top+'px';
+		item.style.left=left+'px';
+	})
+
+	$('.main-nav').on('click',function(){
+		$('.nav-wrap').toggleClass('active');
+	});
+
+	</script>
+</body>
+</html>

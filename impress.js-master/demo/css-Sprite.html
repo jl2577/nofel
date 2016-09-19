@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+	<title>css Sprite</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	ul,li{
+		list-style-type: none;
+	}
+	.sprite{
+		width: 81px;
+		height: 81px;
+		font-size: 0;
+		zoom:3;
+	}
+	.sprite>div{
+		display: inline-block;
+		width: 27px;
+		height: 27px;
+		border: 1px solid #ccc;
+		box-sizing:border-box;
+		background: url("img/icon_sprite.png") no-repeat;
+	}
+	.sprite>div:nth-child(1){
+		background-position: -25px 0;
+	}
+	.sprite>div:nth-child(2){
+		background-position: -25px -25px;
+	}
+	.sprite>div:nth-child(3){
+		background-position: -25px -50px;
+	}
+	.sprite>div:nth-child(4){
+		background-position: -25px -75px;
+	}
+	.sprite>div:nth-child(5){
+		background-position: -25px -100px;
+	}
+	.sprite>div:nth-child(6){
+		background-position: -25px -125px;
+	}
+	.sprite>div:nth-child(7){
+		background-position: -25px -150px;
+	}
+	.sprite>div:nth-child(8){
+		background-position: -25px -175px;
+	}
+	.sprite>div:nth-child(9){
+		background-position: -25px -200px;
+	}
+	</style>
+</head>
+<body>
+	<div class="sprite">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</body>
+</html>

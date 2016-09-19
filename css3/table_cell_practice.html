@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=1.0,user-sacable=0">
+	<title>Document</title>
+	<style>
+	html{
+		font-size: 20px;
+		font-family: "sans-serif";
+	}
+	body{
+		font-size: 1rem;
+	}
+	@media only screen and (min-width: 320px){
+    html{font-size: 20px !important;}
+	}
+	@media only screen and (min-width: 350px){
+	    html{font-size: 22.5px !important;}
+	}
+	@media only screen and (min-width: 365px){
+	    html{font-size: 23px !important;}
+	}
+	@media only screen and (min-width: 375px){
+	    html{font-size: 23.5px !important;}
+	}
+	@media only screen and (min-width: 390px){
+	    html{font-size: 24.5px !important;}
+	}
+	@media only screen and (min-width: 400px){
+	    html{font-size: 25px !important;}
+	}
+	@media only screen and (min-width: 428px){
+	    html{font-size: 26.8px !important;}
+	}
+	@media only screen and (min-width: 432px){
+	    html{font-size: 27.4px !important;}
+	}
+	@media only screen and (min-width: 481px){
+	    html{font-size: 30px !important;}
+	}
+	@media only screen and (min-width: 569px){
+	    html{font-size: 35px !important;}
+	}
+	@media only screen and (min-width: 569px){
+	    html{font-size: 40px !important;}
+	}
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#carinfo{
+		border: 1px solid rgba(204,204,204,0.7);
+		margin: 0.5rem 0.5rem;
+		border-radius: 0.2rem;
+	}
+	.detail_info{
+		width: 100%;
+		height: 2.8rem;
+		display: table;
+		border-bottom: 1px solid rgba(204,204,204,0.7);
+	}
+	.detail_info:last-child{
+		border-bottom: none;
+	}
+	.detail_left{
+		display: table-cell;
+		width: 40%;
+		padding: 0.3rem;
+		vertical-align: middle;
+	}
+	.detail_right{
+		display: table-cell;
+		width: 60%;
+		padding: 0.4rem 0; 
+		vertical-align: middle;
+	}
+	.detail_input{
+		width: 90%;
+		text-align: left;
+		border: 1px solid rgba(0,0,0,0.2);
+		box-shadow: 0 0 0.1rem rgba(0,0,0,0.3) inset;
+		border-radius: 0.2rem;
+		height: 2rem;
+		padding: 0rem 0.3rem;
+		font-size: inherit;
+	}
+	</style>
+</head>
+<body>
+	<div id="carinfo">
+		<p class="detail_info">
+			<span class="detail_left">车辆识别代码/车架号</span>
+			<span class="detail_right">
+				<input type="text" class="detail_input" placeholder='请输入车架号'>
+			</span>
+		</p>
+		<p class="detail_info">
+			<span class="detail_left">发动机号</span>
+			<span class="detail_right">
+				<input type="text" class="detail_input" placeholder='请输入发动机型号'>
+			</span>
+		</p>
+		<p class="detail_info">
+			<span class="detail_left">车辆型号</span>
+			<span class="detail_right">
+				<input type="text" class="detail_input" placeholder='请输入车辆型号'>
+			</span>
+		</p>
+	</div>
+</body>
+</html>

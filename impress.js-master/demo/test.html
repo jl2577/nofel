@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+	<title>Document</title>
+	<script text="javascript/text" src="zepto.js"></script>	
+	<link rel="stylesheet" type="text/css" href="css/selfClaim.css">
+	<script src="js/mobileBUGFix.mini.js"></script>
+	<script src="js/upload.js"></script>
+	<style>
+	.shadow,.single-pic{
+		  display: inline-block;
+		  position: relative;
+		  width: 48%;
+		  height: 11rem;
+		  margin: 0 2% 1rem 0;
+		  box-sizing: border-box;
+		  padding: 5px;
+		  background-color: #fff;
+		  border-radius: 3px;
+		  z-index: 1;
+	}
+	/*  .shadow::before,.single-pic::before{
+			content: "";
+			z-index: -2;
+			position: absolute;
+			background-color: #fff;
+			width: 85%;
+			height: 80%;
+			bottom: 13px;
+			right: 0.8rem;
+			box-shadow: 0 0 40px rgba(0,0,0,1);
+			-webkit-transform: skew(-10deg) rotate(-5deg);
+			   -moz-transform: skew(-10deg) rotate(-5deg);
+			    -ms-transform: skew(-10deg) rotate(-5deg);
+			     -o-transform: skew(-10deg) rotate(-5deg);
+			        transform: skew(-10deg) rotate(-5deg);
+		}
+		.shadow::after,.single-pic::after{
+			content: "";
+			z-index: -2;
+			position: absolute;
+			background-color: #fff;
+			width: 85%;
+			height: 80%;
+			bottom: 13px;
+			left: 0.8rem;
+			box-shadow: 0 0 40px rgba(0,0,0,1);
+			-webkit-transform: skew(10deg) rotate(5deg);
+			   -moz-transform: skew(10deg) rotate(5deg);
+			    -ms-transform: skew(10deg) rotate(5deg);
+			     -o-transform: skew(10deg) rotate(5deg);
+			        transform: skew(10deg) rotate(5deg);
+		} */
+	
+	.upSuccess{
+		animation:success 1s ease-in-out;
+	}
+	@keyframes success{
+	  0% {
+	    -webkit-transform: scale(4) translate(-20px ,20px);
+	    opacity: 0.3;
+	  }
+	  100% {
+	    -webkit-transform: scale(1) translate(0,0);
+	    opacity: 1;
+	  }
+	}
+	</style>
+</head>
+<body class="gray-bg">
+	<div class="loading" id="loading" style="display: none;">
+		<div>
+			<div class="loader"></div>
+		</div>
+	</div>
+	<div class="confirmBox" id="confirmBox" style="display:none;">
+		<div>
+			<div class="text">
+				<div class="alertMsg">
+					<div id="isNotUpload" class="isNotUpload"></div>
+					<span>以上照片仍未提供，我们将无法为您确认修理费，请<span class="red">尽快补充。</span></span>
+				</div>
+			</div>
+			<div class="btn">
+				<span id="back" class="blue">返回</span><span id="confirm" class="pink">确定</span>
+			</div>
+		</div>
+	</div>
+	<div class="steps">
+		<img src="img/paizhao-car.png" width="100%">
+		<div class="step">
+			<span>报案</span>
+			<span class="red">拍照</span>
+			<span>修理费确认</span>
+			<span>完成</span>
+		</div>
+	</div>
+	<div class="upLoadTips">请点击以下示意图并拍摄照片</div>
+	<div class="up-pic">
+		<div id="detail-pic" class="detail-pic" style="display:none">
+			<div>
+				<img src="" width="96%" id="nowPic" style="margin:2%;height:21rem;" >
+				<div id="shoot" class="shoot bg-blue" style="display:block">
+					<span>拍摄</span>
+		    		<input type="file" name="toUploadImg">
+				</div>
+				<div id="re-shoot" class="re-shoot" style="display:none">
+					<span class="bg-blue">
+						<span>重拍</span>
+			    		<input type="file" name="toUploadImg">
+					</span>
+					<span id="changePic" class="bg-pink">示意图</span>
+				</div>
+				<div id="closeDtPic" class="closeDtPic"></div>
+			</div>
+		</div>
+		<div class="pic-name" >全车照片</div>
+		<div class="pic bg-yellow" id="wholeCarPic">
+			<div id="wholeCar" class="single-pic">
+				<img src="img/paizhao-01.png" width="100%" height="100%">
+				<div class="smallLoading" id="smallLoading" style="display:none;">
+					<div>
+						<div class="loader"></div>
+					</div>
+				</div>
+				<div class="upSuccess" style="display:none;">
+					<img src="img/gougou.png" width="100%">
+				</div>
+			</div>
+			<div class="shadow">
+				<img src="img/paizhao-01.png" width="100%" height="100%"></li>
+			</div>	
+		</div>
+		<div class="pic-name" >损失部位照片</div>
+		<div class="pic bg-blue" id="losePic">
+			<div id="farView" class="single-pic">
+				<img src="img/paizhao-02.png" width="100%" height="100%">
+				<div class="smallLoading" id="smallLoading" style="display:none;">
+					<div>
+						<div class="loader"></div>
+					</div>
+				</div>
+				<div class="upSuccess" style="display:none;">
+					<img src="img/gougou.png" width="100%">
+				</div>
+			</div>
+			<div id="closeView" class="single-pic">
+				<img src="img/paizhao-03.png" width="100%" height="100%">
+				<div class="smallLoading" id="smallLoading" style="display:none;">
+					<div>
+						<div class="loader"></div>
+					</div>
+				</div>
+				<div class="upSuccess" style="display:none;">
+					<img src="img/gougou.png" width="100%">
+				</div>
+			</div>
+			<div id="detailView" class="single-pic">
+				<img src="img/paizhao-04.png" width="100%" height="100%">
+				<div class="smallLoading" id="smallLoading" style="display:none;">
+					<div>
+						<div class="loader"></div>
+					</div>
+				</div>
+				<div class="upSuccess" style="display:none;">
+					<img src="img/gougou.png" width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="pic-name" >证件照片</div>
+		<div class="pic bg-green" id="cardsPic">
+			<div id="IDCard" class="single-pic">
+				<img src="img/paizhao-050.png" width="100%" height="100%">
+				<div class="smallLoading" id="smallLoading" style="display:none;">
+					<div>
+						<div class="loader"></div>
+					</div>
+				</div>
+				<div class="upSuccess" style="display:none;">
+					<img src="img/gougou.png" width="100%">
+				</div>
+			</div>
+			<div id="bankCard" class="single-pic">
+				<img src="img/paizhao-080.png" width="100%" height="100%">
+				<div class="smallLoading" id="smallLoading" style="display:none;">
+					<div>
+						<div class="loader"></div>
+					</div>
+				</div>
+				<div class="upSuccess" style="display:none;">
+					<img src="img/gougou.png" width="100%">
+				</div>
+			</div>
+		</div>
+		<div class="pic bg-green" id="licensePic">
+			<div id="licenseDown" class="single-pic">
+				<img src="img/paizhao-070.png" width="100%" height="100%">
+				<div class="smallLoading" id="smallLoading" style="display:none;">
+					<div>
+						<div class="loader"></div>
+					</div>
+				</div>
+				<div class="upSuccess" style="display:none;">
+					<img src="img/gougou.png" width="100%">
+				</div>
+			</div>
+			<div id="licenseUp" class="single-pic">
+				<img src="img/paizhao-060.png" width="100%" height="100%">
+				<div class="smallLoading" id="smallLoading" style="display:none;">
+					<div>
+						<div class="loader"></div>
+					</div>
+				</div>
+				<div class="upSuccess" style="display:none;">
+					<img src="img/gougou.png" width="100%">
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<input type="submit" id="picOver" value class="picOverImg sub-btn">
+	<div class="tel">
+		<a href="tel:4006695511"></a>
+	</div>
+</body>
+<script type="text/javascript">
+		var reportNo='<c:out value="${reportNo}"/>';
+		var serverId = '';
+		var currentPic={
+			wholeCarPic:{bigTypeCode:"000",
+						 groupId:"",
+						 wholeCar:{defaultSrc:"img/paizhao-010.png" ,  oldSrc:"", newSrc:"", typeCode:"000000",    isUpload:false}},
+			losePic:	{bigTypeCode:"004",
+						 groupId:"",
+						 farView:{defaultSrc:"img/paizhao-020.png" ,  oldSrc:"", newSrc:"", typeCode:"004000001", isUpload:false},
+			        	 closeView:{defaultSrc:"img/paizhao-030.png" ,  oldSrc:"", newSrc:"", typeCode:"004000002", isUpload:false},
+			        	 detailView:{defaultSrc:"img/paizhao-040.png" ,  oldSrc:"", newSrc:"", typeCode:"004000003", isUpload:false}},
+			cardsPic:   {bigTypeCode:"100",
+						 groupId:"",
+						 IDCard:{defaultSrc:"img/paizhao-050.png" ,  oldSrc:"", newSrc:"", typeCode:"100000",    isUpload:false},
+						 bankCard:{defaultSrc:"img/paizhao-080.png" ,  oldSrc:"", newSrc:"", typeCode:"100100",    isUpload:false}},
+			licensePic:	{bigTypeCode:"001",
+						 groupId:"",
+			           	 licenseUp:{defaultSrc:"img/paizhao-060.png" ,  oldSrc:"", newSrc:"", typeCode:"001000",    isUpload:false},
+			           	 licenseDown:{defaultSrc:"img/paizhao-070.png" ,  oldSrc:"", newSrc:"", typeCode:"001001",    isUpload:false}}}
+		bindSinglePic();
+		$("#changePic").click(function(event) {
+			var text=$("#changePic").text();
+			if($("#nowPic").attr("defaultSrc")){
+				if(text=="照片"){
+					$("#changePic").html("示意图");
+					$("#nowPic")[0].src=$("#nowPic").attr("newSrc");
+				}else {
+					$("#changePic").html("照片");
+					$("#nowPic")[0].src=$("#nowPic").attr("defaultSrc");
+				}
+			}
+				
+		});
+		
+		$("#closeDtPic").click(function() {
+			$("#detail-pic").hide();
+		});
+		
+		$('input[name="toUploadImg"]').each(function(){	
+			uploadPic($(this));
+		});
+		
+		$("#picOver").click(function(event) {
+			var types="";
+			var text="";
+			var flag=true;
+			for(var a in currentPic){
+				for(var o in currentPic[a]){
+					if((currentPic[a][o] || "").isUpload==false){
+						types+=a;
+						break;
+					}
+				}
+			}
+			if(types.indexOf("wholeCarPic")!=-1){
+				flag=false;
+				text+='<span class="blue">全车图片</span>';
+			}
+			if(types.indexOf("losePic")!=-1){
+				flag=false;
+				text+='<span class="blue">损失部位照片</span>';
+			}
+			if(types.indexOf("licensePic")!=-1 || types.indexOf("cardsPic")!=-1){
+				flag=false;
+				text+='<span class="blue">证件照片</span>';
+			}
+			if(flag){
+				$("#loading").show();
+				location.href="claiming.html";
+			}else{
+				$("#isNotUpload").empty().append(text);
+				$("#confirmBox").show();
+			}
+		});
+		
+		$("#back").click(function(){
+			$("#confirmBox").hide();
+		});
+		
+		$("#confirm").click(function() {
+			location.href="index.html";
+		});
+	
+	function bindSinglePic(){
+		$(".single-pic").each(function() {
+			$(this).click(function(event) {
+				var typeName=$(this)[0].id;
+				var bigTypeName=$(this).parent()[0].id;
+				$("#nowPic")[0].src=currentPic[bigTypeName][typeName].defaultSrc;
+				$("#nowPic").attr("defaultSrc",currentPic[bigTypeName][typeName].defaultSrc)
+							.attr("newSrc",currentPic[bigTypeName][typeName].newSrc)
+							.attr("bigTypeName",bigTypeName)
+							.attr("typeName",typeName);
+				
+				if(currentPic[bigTypeName][typeName].newSrc){
+					$("#shoot").hide();
+					$("#re-shoot").show();
+					$("#changePic").html("示意图");
+					$("#nowPic")[0].src=currentPic[bigTypeName][typeName].newSrc;
+					if(!currentPic[bigTypeName][typeName].defaultSrc){
+						$("#changePic").removeClass('bg-pink').addClass('bg-gray');
+					}
+				}else{
+					$("#shoot").show();
+					$("#re-shoot").hide();
+					$("#nowPic")[0].src=currentPic[bigTypeName][typeName].defaultSrc;
+				}
+				$("#detail-pic").show();
+			});
+		});
+	}
+	
+	function getMorePicIndex(bigTypeName){
+		var index="1";
+		for(var obj in currentPic[bigTypeName]){
+			var o=(currentPic[bigTypeName][obj] || "" ).index;
+			if(o>=index){
+				index=o-"0"+1;
+			}
+		}
+		return index;
+	}
+	
+	function addMoreButton(bigTypeName){
+		if($("#"+bigTypeName).find("#addMoreImg").length==0){
+			var morePic=$('<div id="addMoreImg" bigtypename='+bigTypeName+' class="more-pic"><img src="selfClaim/killer/img/paizhao-05.jpg" width="100%" height="100%"><input type="button" name="toUploadMoreImg"></div>');
+			if(bigTypeName=="wholeCarPic")
+			{
+				if(currentPic[bigTypeName].wholeCar.newSrc || currentPic[bigTypeName].wholeCar.oldSrc){
+					$("#"+bigTypeName).append(morePic);	
+					morePic.tap(function(){uploadMoreImg($(this));});
+				}
+			} 
+			if(bigTypeName=="losePic")
+			{
+				if((currentPic[bigTypeName].farView.newSrc ||currentPic[bigTypeName].farView.oldSrc)
+									  && (currentPic[bigTypeName].closeView.newSrc || currentPic[bigTypeName].closeView.oldSrc)
+									  && (currentPic[bigTypeName].detailView.newSrc||currentPic[bigTypeName].detailView.oldSrc))
+				{
+					$("#"+bigTypeName).append(morePic);
+					morePic.tap(function(){uploadMoreImg($(this));});
+				}
+			}
+		}
+	}
+
+	function uploadPic(obj,more){
+		obj.UploadImg({
+	    	clickFlag:false,//是否选择照片就上传 如果为true，表示选择完图片后马上上传（url参数有效，error，success，有效）。如果为false url参数无效，error，success，无效）
+	        url : '', //选择照片就上传的路径
+		    quality : '1', //压缩率，默认值为0.8
+			          // 如果quality是1 宽和高都未设定 则上传原图
+	        mixsize : '5000000',//上传图的大小（单位字节）
+	        type : 'image/jpg,image/jpeg,image/tif,image/bmp,image/png',
+	        before : function(blob,compressBase64,obj){
+					$("#detail-pic").hide();
+					var bigTypeName=$("#nowPic").attr("BigtypeName");
+					var typeName=$("#nowPic").attr("typeName");
+					var typeCode=currentPic[bigTypeName][typeName].typeCode;
+					currentPic[bigTypeName][typeName].newSrc=compressBase64;
+					currentPic[bigTypeName][typeName].isUpload=true;
+					$("#"+typeName).children()[0].src=compressBase64;
+					//$($("#"+typeName).children()[2]).hide();
+					//$($("#"+typeName).children()[1]).show();				
+					//addMoreButton(bigTypeName);
+					//upSinglePic(compressBase64,typeCode,$("#"+typeName),bigTypeName);
+		    },
+		    error : function(res){
+		          
+		    },
+		    success : function(base64,res,obj,blob){
+		            
+		    }
+	    });
+	}
+
+	function uploadMorePic(obj){
+		upLoadMoreLocalIds = ['123456789','987654321']
+		var bigTypeName=obj.parent().parent()[0].id;
+		var typeCode=(bigTypeName=="wholeCarPic")?"000000":"004000001";
+		for(var i = 0;i<upLoadMoreLocalIds.length;i++){
+		var index=getMorePicIndex(bigTypeName);
+		var morePic='<div id="'+(bigTypeName+index)+'" class="single-pic"><img src="'+upLoadMoreLocalIds[i]+'" width="100%" height="100%"><div class="smallLoading" id="smallLoading" style="display:none;"><div><div class="loader"></div></div></div><div class="upSuccess" style="display:none;"><img src="selfClaim/killer/img/gougou.png" width="100%"></div></div>';
+		var pic={defaultSrc:"" ,  oldSrc:"", newSrc:upLoadMoreLocalIds[i], typeCode:typeCode, isUpload:true,index:index};
+			currentPic[bigTypeName][bigTypeName+index]=pic;
+			obj.parent().before(morePic);
+			$($("#"+bigTypeName+index).children()[2]).hide();				
+			$($("#"+bigTypeName+index).children()[1]).show();
+		}
+		bindSinglePic();
+		$("#closeDtPic").tap(function() {
+			$("#detail-pic").hide();
+		});	
+		var num=Number(getMorePicIndex(bigTypeName))-upLoadMoreLocalIds.length;
+	}
+
+	
+	function uploadImg() {
+		//选择拍照和相机
+		wx.chooseImage({
+			count : 1, // 默认9
+			sizeType : [ 'original', 'compressed' ], // 可以指定是原图还是压缩图，默认二者都有
+			sourceType : [ 'album', 'camera' ], // 可以指定来源是相册还是相机，默认二者都有
+			success : function(res) {
+				var localIds = res.localIds;// 返回图片的服务器端ID
+				//alert("选择照片时，返回的localIds：" + localIds[0])// 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+				$("#detail-pic").hide();
+				var bigTypeName=$("#nowPic").attr("BigtypeName");
+				var typeName=$("#nowPic").attr("typeName");
+				currentPic[bigTypeName][typeName].newSrc=localIds;
+				currentPic[bigTypeName][typeName].isUpload=true;
+				$("#"+typeName).children()[0].src=localIds;
+				$($("#"+typeName).children()[2]).hide();				
+				$($("#"+typeName).children()[1]).show();				
+				addMoreButton(bigTypeName);
+
+				/*obj.parent().parent().parent().find('img')[0].src = localIds;
+				var cur = "#" + currentPic.currentPicId;
+				var bigType = currentPic.currentPicId.split('_')[0];
+				var smallType = currentPic.currentPicId.split('_')[1];
+				currentPic[bigType][smallType-1].newSrc = localIds;
+				currentPic[bigType][smallType-1].isUpload = true;
+				$(cur).children()[0].src = localIds;
+				$("#shoot").hide();
+				$("#re-shoot").show();
+				$("#changePic").html("示意图");
+				if ((bigType=='whole'&&smallType==1&&currentPic[bigType].length<=1)||(bigType=='loss'&&smallType<4&&currentPic[bigType].length<=3)||(bigType=='card'&&smallType<5&&currentPic[bigType].length<=4)) 
+				{
+					var addMoreIdStr = '';
+					var addMoreImg='';
+					if (bigType=='whole'&&currentPic[bigType][0].isUpload) {
+						addMoreIdStr = "whole";
+						addMoreImg = $('<div id="whole_addMoreImg" class="single-pic"><img src="img/paizhao-05.jpg" width="100%" height="100%"></div>');
+					} else if (bigType=='loss'&&currentPic[bigType][0].isUpload&&currentPic[bigType][1].isUpload&&currentPic[bigType][2].isUpload) {
+						addMoreIdStr = "loss";
+						addMoreImg = $('<div id="loss_addMoreImg" class="single-pic"><img src="img/paizhao-05.jpg" width="100%" height="100%"></div>');
+					} else if (bigType=='card'&&currentPic[bigType][0].isUpload&&currentPic[bigType][1].isUpload&&currentPic[bigType][2].isUpload&&currentPic[bigType][3].isUpload) {
+						addMoreIdStr = "card";
+						addMoreImg = $('<div id="card_addMoreImg" class="single-pic"><img src="img/paizhao-05.jpg" width="100%" height="100%"></div>');
+					}
+                    if(addMoreImg ==''){
+                        return;
+                                                     }
+					$(cur).parent().append(addMoreImg);
+					addMoreImg.click(function() {
+								uploadMoreImg($("#"+ addMoreIdStr+ "_addMoreImg"),	addMoreIdStr);
+					})
+				}*/
+				//上传图片到微信服务器
+				wx.uploadImage({
+					localId : localIds[0], // 需要上传的图片的本地ID，由chooseImage接口获得
+					isShowProgressTips : 0, // 默认为1，显示进度提示
+					success : function(res) {
+						serverId = res.serverId; //用来下载的ID						
+						alert("上传后返回的serverId：" + serverId);  //微信上传成功。调后台
+						$($("#"+typeName).children()[1]).hide();
+						$($("#"+typeName).children()[2]).show();
+						//window.location.href='http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=5_Ma88qNZ1RVEAsVeWluWjRm8Uh_F-llXMeCVAc71mdPrZ5Ztzaz_uQ6PUojtuGr2y2BRK-LwCNL9O25lfGb_hAUbM1LJd2ru_wDnRXKdc8XADdAJARUX&media_id='+serverId;
+					}
+				});
+
+			}
+		});
+
+	}
+	var upLoadMoreCount = 0;
+	var upLoadMoreLocalIds =[];
+	//点击选择更多图片事件
+	function uploadMoreImg(obj,type){
+		upLoadMoreCount = 0;
+		upLoadMoreLocalIds =[];
+		wx.chooseImage({
+			count : 9, // 默认9
+			sizeType : [ 'original', 'compressed' ], // 可以指定是原图还是压缩图，默认二者都有
+			sourceType : [ 'album', 'camera' ], // 可以指定来源是相册还是相机，默认二者都有
+			success : function(res) {
+				upLoadMoreLocalIds = res.localIds;
+				for(var i = 0;i<upLoadMoreLocalIds.length;i++){
+					var imgTemp = $('<div id="'+type+(i+1)+'" class="single-pic-more"><img src="'+upLoadMoreLocalIds[i]+'" width="100%" height="100%"></div>');
+					obj.before(imgTemp);
+					currentPic[type+(i+1)] = {defaultSrc:"",newSrc:"",isUpload:false};
+					currentPic[type+(i+1)].newSrc = upLoadMoreLocalIds[i];
+				}
+				$('.single-pic-more').each(function(){
+					alert($('.single-pic-more').length);
+		             $(this).bind('click',function(){moreImgClick($(this).find("img"))});
+		
+	            })
+	            $("#closeDtPic_more").bind('click',function() {
+	          		 $("#detail-pic_more").hide();
+	          	});
+				wxUploadImage(upLoadMoreLocalIds[0],type);	
+			}
+		});
+	}
+	function wxUploadImage(localIds,type){	
+		wx.uploadImage({
+			localId : localIds, // 需要上传的图片的本地ID，由chooseImage接口获得
+			isShowProgressTips : 0, // 默认为1，显示进度提示
+			success : function(res) {
+				var serverId = res.serverId; 
+				alert("serverId:"+serverId);//用来下载的ID  //微信上传成功。调后台
+				upLoadMoreCount++;
+				if(upLoadMoreCount<upLoadMoreLocalIds.length){
+					wxUploadImage(upLoadMoreLocalIds[upLoadMoreCount],type)
+				}
+			}
+	    });
+	}
+	//选择更多图片出来的图片的点击事件
+	function moreImgClick (obj){
+			var img=obj;
+			var src=img.attr('src');
+			currentPic.currentPicId=obj.parent()[0].id;
+			$("#detail-pic_more>div>img")[0].src=src;
+			$("#detail-pic_more").show();
+	}
+
+</script>
+<script>
+	window.addEventListener('storage',function(event){
+		console.log(event.key);
+	},false);
+
+	function Cookie(key, value, options) {
+		if(arguments.length > 1 && (!/Object/.test(Object.prototype.toString.call(value)) || value === null || value === undefined)) {
+			options = options || {};
+			if (value === null || value === undefined) {
+				options.expires = -1;
+			}
+			if (typeof options.expires === 'number') {
+				var days = options.expires, t = options.expires = new Date();
+				t.setDate(t.getDate() + days);
+			}
+			value = String(value);
+			return (document.cookie = [encodeURIComponent(key), '=', options.raw ? value : encodeURIComponent(value), options.expires ? '; expires=' + options.expires.toUTCString() : '', options.path ? '; path=' + options.path : '', options.domain ? '; domain=' + options.domain : '', options.secure ? '; secure' : ''].join(''));
+		}
+		options = value || {};
+		var decode = options.raw ? function(s) {
+			return s;
+		} : decodeURIComponent;
+		var pairs = document.cookie.split('; ');
+		for ( var i = 0, pair; pair = pairs[i] && pairs[i].split('='); i++) {
+			if (decode(pair[0]) === key)
+				return decode(pair[1] || '');
+		}
+		return null;
+	}
+
+	Object.prototype.toString=function(obj){
+		var s=JSON.stringify(obj);
+		return s;
+	}
+</script>
+<script>
+	var serviceName="SERVICENAME",storage=null;
+	//通过load事件读取数据至本地变量
+	window.onload=function(){
+		try{
+			storage=JSON.parse(localStorage[serviceName] || '{}');
+		}catch(e){
+			storage={};
+		}
+	}
+	//通过onbeforeunload时间将数据写入localStorage
+	window.onbeforeunload=function(){
+		localStorage[serviceName]=JSON.stringify(storage)
+	}
+</script>
+<script>
+	var foo=$("#foo");
+	//console.log(foo);
+	
+	var target = { one: 'patridge' },
+    source = { two: 'turtle doves' ,three:{a:1,b:2}}
+	var newobj=$.extend(true,target, source);
+	console.log(newobj);
+
+	$.fn.cal=function(num){
+		return Math[num < 0 ? 'ceil' : 'floor'](num);
+	}
+
+	var newArr=$.grep([1,2,3,4,5],function(item){
+    	return item>2;
+	});
+
+	var newMap=$.map([1,2,3,4,5],function(item,index){
+        return item>2;
+	});
+
+	var o={"yao":1,"tai":2,"yang":3,"li":"abc","zhang":{a:1,b:2},"wang":function(e){return e;}};
+	var newMap1=$.map(o,function(item,index){
+    	return item*item;
+	});
+	//grep、map都是对数组进行遍历，grep返回值是元素执行条件后为true的元素值。map返回值元素执行条件后的结果。
+	//tips：map可以对对象的属性进行遍历，返回值是属性的值执行条件后的结果。
+	var dom=$("#losePic").children(":nth-child(2n-1)");
+	
+	var dom1=$("#closeView .smallLoading .loader");
+
+	var domclosest=dom1.closest('.pic .single-pic');   //closest它只返回最先匹配的祖先元素
+	var dom2=$(".smallLoading").parent(":nth-child(1)");
+
+	$(".single-pic").each(function(index) {				//index为对象集合中元素的索引，this是当前dom节点
+			console.log("第 %d 个sinple-pic: %o",index,this);
+			if(this.id=="farView")
+				return false;		//返回false则遍历结束,
+	});
+
+	$(".single-pic").find($(".smallLoading"));   //find参数可以是element、selector、collection
+	$(".single-pic").find(".smallLoading");
+	$(".single-pic").find("img");
+
+	//eq()------get()方法-----first()方法(last()类似)
+	$("#losePic").find("img").eq(0)[0]===$("#losePic").find("img").first()[0];
+	$("#losePic").find("img").eq(0)[0]===$("#losePic").find("img")[0];
+	$("#losePic").find("img").eq(0)[0]===$("#losePic").find("img").get(0);
+	//eq()返回的是zepto对象集合，get()返回的是dom节点
+	//eq()--无参-->[]     get()----无参--->array
+	
+	$(".pic-name").html();//----->返回第一个元素的innerHtml值
+	//$(".pic-name").html('<span>new html</span>');  //----->参数可以是append的参数类型
+
+	//$(".pic-name").html(function(index,html){});
+	
+	//after----before   与  insertAfter----insertBefore
+	//target.before(newDom);
+	//newDom.insertBefore(target);     ------>target与newDom都可以是element、selector、collection
+	
+	//pluck()方法  ----> 对象集合中每个元素的属性值
+	$.fn.prev=function(selector){ return $(this.pluck('previousElementSibling')).filter(selector || '*') };
+    $.fn.next=function(selector){ return $(this.pluck('nextElementSibling')).filter(selector || '*') };
+
+	console.log($(".single-pic").pluck('id'));
+
+	/*$(".pic-name").prepend("<span>abc</span>");		
+	$("<span>abc</span>").prependTo(".pic-name");
+
+	$(".pic-name").append("<span>abc</span>");	
+	$("<span>abc</span>").appendTo(".pic-name");*/
+	//append在之后添加，prepend在之前添加。
+	//append与appendTo是相反的。
+	
+	function arrayRemoveIndex(array,obj){
+		var index=array.indexOf(obj);
+		if(index >= 0){
+			array.splice(index,1);  //删除下标由index开始的1个元素
+		}
+	}
+</script>
+</html>

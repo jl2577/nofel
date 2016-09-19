@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>制作固定区域的博客列表</title>
+	<link rel="stylesheet" type="text/css" href="http://www.w3cplus.com/demo/css3/base.css" media="all">
+	<style type="text/css">
+	.block{
+		margin: 0 auto;
+		margin-top: 20px;
+		width: 318px;
+		line-height: 20px;
+		border: 1px solid #fc9;
+	}
+
+	.block ol{
+		padding-left: 23px;
+		width: 14em;
+	}
+	.block li{
+		clear: both;
+		margin: 0px;
+		padding: 0px;
+		list-style: none outside none;
+	}
+	.block li a{
+		float: left;
+		_display :inline; /*兼容ie6*/
+		max-width: 14em;/*为应用text-overflow做准备 固定宽度*/
+		white-space: nowrap;/*为应用text-overflow做准备，禁止换行*/
+		_white-space:normal;/*ie6下隐藏换行的文本*/
+		overflow: hidden;/*为应用text-overflow做准备，隐藏溢出文本*/
+		text-overflow:ellipsis;
+		color: #333;
+		_background:transparent;
+	}
+	.block li span{
+		_position:relative;
+		float:left;
+		_display:inline;
+		margin-right: -99px;
+		margin-left: 10px;
+		font-size: 10px;
+		color: #999;
+	}
+	</style>
+</head>
+<body>
+	<div class="block">
+		<h3>最新博文</h3>
+		<ol class="clearfix">
+			<li><a href="#">如何高效使用CSS如何高效使用CSS如何高效使用CSS</a><span>2015-10-25</span></li>
+			<li><a href="#">如何高效使用CSS如何高效使用CSS如何高效使用CSS</a><span>2015-10-25</span></li>
+			<li><a href="#">如何高效使用CSS如何高效使用CSS如何高效使用CSS</a><span>2015-10-25</span></li>
+			<li><a href="#">如何高效使用CSS如何高效使用CSS如何高效使用CSS</a><span>2015-10-25</span></li>
+			<li><a href="#">如何高效使用CSS如何高效使用CSS如何高效使用CSS</a><span>2015-10-25</span></li>
+			<li><a href="#">如何高效使用CSS如何高效使用CSS如何高效使用CSS</a><span>2015-10-25</span></li>
+			<li><a href="#">如何高效使用CSS如何高效使用CSS如何高效使用CSS</a><span>2015-10-25</span></li>
+			<li><a href="#">如何高效使用CSS如何高效使用CSS如何高效使用CSS</a><span>2015-10-25</span></li>
+			<li><a href="#">如何高效使用CSS如何高效使用CSS如何高效使用CSS</a><span>2015-10-25</span></li>
+			<li><a href="#">如何高效使用CSS如何高效使用CSS如何高效使用CSS</a><span>2015-10-25</span></li>
+		</ol>
+	</div>
+</body>
+</html>

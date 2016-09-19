@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3径向渐变</title>
+	<style type="text/css">
+	span{
+		display: block;
+		width: 100%;
+		height: 50px;
+		text-align: center;
+		line-height: 50px;
+		font-size: 35px;
+		color:red;
+		font-weight: bold;
+		text-shadow:2px 1px 5px green;
+	}
+	div{
+		width: 440px;
+		height: 300px;
+		float: left;
+		margin: 10px 10px;
+		border: 5px solid #ccc;
+		text-align: center;
+		font-size: 25px;
+		line-height: 300px;
+		font-weight: bold;
+		color:yellow;
+	}
+	.div1{
+		background-image: -webkit-radial-gradient(red,green);
+		background-image: radial-gradient(red,green);
+	}
+	.div2{
+		background-image: -webkit-radial-gradient(circle,red,green);
+		background-image: radial-gradient(circle,red,green);
+	}
+	.div3{
+		background-image: -webkit-radial-gradient(50px 150px at 300px 150px,red,green);
+		background-image: radial-gradient(50px 150px at 300px 150px,red,green);
+	}
+	.div4{
+		background-image: -webkit-radial-gradient(20% 90% at 30% 80%,red,green);
+		background-image: radial-gradient(20% 90% at 30% 80%,red,green);
+	}
+	.div5{
+		background-image: -webkit-radial-gradient(circle at center,red,green);
+				background-image: radial-gradient(circle at center,red,green);
+	}
+	.div6{
+		background-image: -webkit-radial-gradient(ellipse at center,red,green);
+				background-image: radial-gradient(ellipse at center,red,green);
+	}
+	.div7{
+		background-image: -webkit-radial-gradient(circle at left,red,green);
+				background-image: radial-gradient(circle at left,red,green);
+	}	
+	.div8{
+		background-image: -webkit-radial-gradient(ellipse at left,red,green);
+				background-image: radial-gradient(ellipse at left,red,green);
+	}
+	.div9{
+		background-image: -webkit-radial-gradient(circle at right,red,green);
+				background-image: radial-gradient(circle at right,red,green);
+	}
+	.div10{
+		background-image: -webkit-radial-gradient(ellipse at right,red,green);
+				background-image: radial-gradient(ellipse at right,red,green);
+	}
+	.div11{
+		background-image: -webkit-radial-gradient(circle at top,red,green);
+				background-image: radial-gradient(circle at top,red,green);
+	}
+	.div12{
+		background-image: -webkit-radial-gradient(ellipse at top,red,green);
+				background-image: radial-gradient(ellipse at top,red,green);
+	}
+	.div13{
+		background-image: -webkit-radial-gradient(circle at bottom,red,green);
+				background-image: radial-gradient(circle at bottom,red,green);
+	}
+	.div14{
+		background-image: -webkit-radial-gradient(ellipse at bottom,red,green);
+				background-image: radial-gradient(ellipse at bottom,red,green);
+	}
+	.div15{
+		background-image: -webkit-radial-gradient(circle at top left,red,green);
+				background-image: radial-gradient(circle at top left,red,green);
+	}	
+	.div16{
+		background-image: -webkit-radial-gradient(ellipse at top left,red,green);
+				background-image: radial-gradient(ellipse at top left,red,green);
+	}
+	.div17{
+		background-image: -webkit-radial-gradient(circle at top right,red,green);
+				background-image: radial-gradient(circle at top right,red,green);
+	}
+	.div18{
+		background-image: -webkit-radial-gradient(ellipse at top right,red,green);
+				background-image: radial-gradient(ellipse at top right,red,green);
+	}
+	.div19{
+		background-image: -webkit-radial-gradient(circle at bottom left,red,green);
+				background-image: radial-gradient(circle at bottom left,red,green);
+	}
+	.div20{
+		background-image: -webkit-radial-gradient(ellipse at bottom left,red,green);
+				background-image: radial-gradient(ellipse at bottom left,red,green);
+	}
+	.div21{
+		background-image: -webkit-radial-gradient(circle at bottom right,red,green);
+				background-image: radial-gradient(circle at bottom right,red,green);
+	}
+	.div22{
+		background-image: -webkit-radial-gradient(ellipse at bottom right,red,green);
+				background-image: radial-gradient(ellipse at bottom right,red,green);
+	}
+
+	.div23{
+		background-image: -webkit-radial-gradient(100px circle at 30% 70%,red 20%,green 70%,blue 100%);
+				background-image: radial-gradient(100px circle at 30% 70%,red 20%,green 70%,blue 100%);
+	}
+	.div24{
+		background-image: -webkit-radial-gradient(80px 150px ellipse at 30% 70%,red 20%,green 70%,blue 100%);
+				background-image: radial-gradient(80px 150px ellipse at 30% 70%,red 20%,green 70%,blue 100%);
+	}
+
+	.div25{
+		background-image: -webkit-repeating-linear-gradient(to left,red ,green 50px ,blue 111px);
+				background-image: repeating-linear-gradient(to left,red ,green 50px ,blue 111px);
+	}
+	.div26{
+		background-image: -webkit-repeating-radial-gradient(circle at 26% 38%,red ,green 50px ,blue 111px);
+				background-image: repeating-radial-gradient(circle at 26% 38%,red ,green 50px ,blue 111px);
+	}
+
+	.gradient-text{
+		text-align:center;
+		font-size:70px;
+		background-image: -webkit-linear-gradient(to right,red,green);
+		background-image: -webkit-gradient(linear,0 0, right 0, from(red), to(green));
+		background-image: -moz-linear-gradient(to right,red,green);
+		background-image: linear-gradient(to right,red,green);
+		font-weight: bolder;
+		-webkit-background-clip:text;
+		-webkit-text-fill-color: transparent;
+		
+	}
+	</style>
+</head>
+<body>
+	<span>径向渐变不同参数下的效果展示,包括重复渐变</span>
+	<span>当然还有其他的4个关键字：closet-side \ closet-corner \ farthest-side \ farthest-corner</span>
+	<div class="div1">默认</div>
+	<div class="div2">关键字circle</div>
+	<div class="div3">圆心相同50px 150px at 300px 150px</div>
+	<div class="div4">使用百分比20% 80% at 40% 60%</div>
+	<div class="div5">circle at center</div>
+	<div class="div6">ellipse at center</div>
+
+	<div class="div7">circle at left</div>
+	<div class="div8">ellipse at left</div>
+	<div class="div9">circle at right</div>
+	<div class="div10">ellipse at right</div>
+	<div class="div11">circle at top</div>
+	<div class="div12">ellipse at top</div>
+	<div class="div13">circle at bottom</div>
+	<div class="div14">ellipse at bottom</div>
+
+	<div class="div15">circle at top left</div>
+	<div class="div16">ellipse at top left</div>
+	<div class="div17">circle at top right</div>
+	<div class="div18">ellipse at top right</div>
+	<div class="div19">circle at bottom left</div>
+	<div class="div20">ellipse at bottom left</div>
+	<div class="div21">circle at bottom right</div>
+	<div class="div22">ellipse at bottom right</div>
+
+	<div class="div23">多色50px circle at 30% 70%</div>
+	<div class="div24">多色50px 100px ellipse at 30% 70%</div>
+	
+	<div class="div25">重复线性渐变</div>
+	<div class="div26">重复径向渐变</div>
+	<div class="gradient-text">渐变字体</div>
+</body>
+</html>

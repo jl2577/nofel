@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>伸缩流方向</title>
+	<style type="text/css">
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	body>div{
+		border: 1px solid #ccc;
+		margin: 20px;
+		padding: 10px;
+	}
+	div>div{
+		border: 1px solid #f36;
+		width: 200px;
+		height: 100px;
+		text-align: center;
+		line-height: 100px;
+	}
+	.box{
+		display: -moz-box;
+		display: -webkit-box;
+		display: box;
+	}
+	.box-horizontal{
+		-moz-box-orient:horizontal;
+		-webkit-box-orient:horizontal;
+		box-orient:horizontal;
+	}
+	.box-vertical{
+		-moz-box-orient:vertical;
+		-webkit-box-orient:vertical;
+		box-orient:vertical;
+	}
+	.box-inline-axis{
+		   -moz-box-orient:inline-axis;
+		-webkit-box-orient:inline-axis;
+		        box-orient:inline-axis;
+	}
+	.box-block-axis{
+		   -moz-box-orient:block-axis;
+		-webkit-box-orient:block-axis;
+		        box-orient:block-axis;
+	}
+	div[jiang="border-radius"]{
+		width: 200px;
+		height: 200px;
+		border: 5px solid #ccc;
+		border-radius: 50px 50px 30px 20px / 50px 50px 10px 30px;
+	}
+	input[type="SUBMIT"]{
+		width: 200px;
+		height: 50px;
+		border: 10px solid #ccc;
+	}
+	</style>
+</head>
+<body>
+	<div class="box box-horizontal">
+		<div>horizontal A</div>
+		<div>horizontal B</div>
+		<div>horizontal C</div>
+		<div>horizontal D</div>
+	</div>
+	<div class="box box-vertical">
+		<div>vertical A</div>
+		<div>vertical B</div>
+		<div>vertical C</div>
+		<div>vertical D</div>
+	</div>
+	<div class="box box-inline-axis">
+		<div>inline-axis A</div>
+		<div>inline-axis B</div>
+		<div>inline-axis C</div>
+		<div>inline-axis D</div>
+		
+	</div>
+	<div class="box box-block-axis">
+		<div>block-axis A</div>
+		<div>block-axis B</div>
+		<div>block-axis C</div>
+		<div>block-axis D</div>
+	</div>
+	<br>
+	<br>
+	<div jiang="border-radius"></div>
+	<input type="submit">
+</body>
+<script type="text/javascript">
+	function getArgs(func){
+		//匹配函数括号里的参数
+		var args=func.toString().match(/function\s.*?\(([^)]*)\)/)[1];
+
+		//分解参数成数组
+		return args.split(",").map(function (arg){
+			//去空格和内联注释
+			return arg.replace(/\/\*.*\*\//,"").trim();
+		}).filter(function(args) {
+			//确保没有undefineds
+			return args;
+		});
+	}
+
+	function test(agr1,arg2,arg3){
+		//这里是注释
+		/*这里也是注释*/
+	}
+	//console.log(getArgs(test));
+
+	var func=function y(a){
+		return a;
+	}
+
+	var obj={};
+	var arr=[];
+	arr[0]=1,arr[1]=2;
+	obj.a=arr;
+	obj.b=2;
+	obj.c=3;
+	obj.d=function x(a){console.log(2*a);};
+	obj.e=function y(a){return 3*a;};
+	var o={};
+	o.a=1;
+	o.b=function z(a){console.log(4*a);};
+	obj.f=o;
+	//console.log(Array);
+	//
+	var test = {
+    'abc': 'I am a keyword so I must be notated as a string',
+    efg: 'I am a keyword too so me'
+	};
+
+	function cal(num){
+		return Math[num < 0 ? 'ceil' : 'floor'](num);
+	}
+</script>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片上的圆角运用</title>
+	<style type="text/css">
+	.img{
+		width: 300px;
+		height: 200px;
+		border: 5px solid transparent;
+		box-shadow: 0px 0px 30px red inset;
+		border-radius: 10px;
+	}
+	img{
+		position: relative;
+		z-index: -1;
+		border: 5px solid red;
+		border-radius: 10px;
+		box-sizing : border-box;
+	}
+
+	table{
+		margin: 10px;
+		border: 5px solid orange;
+		border-radius: 10px;
+	}
+
+	.table1{
+		border-collapse: collapse;
+	}
+
+	.table2{
+		border-collapse: separate;
+	}
+
+	.semicircle{
+		margin: 50px;
+		background-color: red;
+		display: inline-block;		
+	}
+	.stop{
+		width: 100px;
+		height: 50px;
+		border-radius: 50px 50px 0 0;
+	}
+	.sright{
+		width: 50px;
+		height: 100px;
+		border-radius: 0 50px 50px 0;
+	}
+	.sbottom{
+		width: 100px;
+		height: 50px;
+		border-radius: 0 0 50px 50px;
+	}
+	.sleft{
+		width: 50px;
+		height: 100px;
+		border-radius: 50px 0 0 50px;
+	}
+	.heartcircle{
+		background-color: pink;
+		margin:50px;
+		display: inline-block;
+		width: 100px;
+		height: 100px;
+		transform:rotate(45deg);
+	}
+	.htop{
+		border-radius: 0 50px 50px 50px ;
+	}
+	.hright{
+		border-radius: 50px 0 50px 50px ;
+	}
+	.hbottom{
+		border-radius: 50px 50px 0 50px ;
+	}
+	.hleft{
+		border-radius: 50px 50px 50px 0 ;
+	}
+	.quarterCircle{
+		background-color: green;
+		margin:50px;
+		display: inline-block;
+		width: 100px;
+		height: 100px;
+	}
+	.qtop{
+		border-radius: 100px 0 0 0 ;
+	}
+	.qright{
+		border-radius: 0 100px 0 0 ;
+	}
+	.qbottom{
+		border-radius: 0 0 100px 0 ;
+	}
+	.qleft{
+		border-radius: 0 0 0 100px ;
+	}
+
+	.oval{
+		background-color: blue;
+		margin: 50px;
+		display: inline-block;
+	}
+	.hov{
+		width: 100px;
+		height: 50px;
+		border-radius: 100px/50px
+	}
+	.ver{
+		width: 50px;
+		height: 100px;
+		border-radius: 50px/100px
+	}
+	</style>
+</head>
+<body>
+	<div class="img">
+	<img src="img/1_1.jpg" alt="" width="300px" height="200px">
+	</div>
+	<br>
+	<br>
+	<br>
+	<table class="table1">
+		<tr>
+			<td>border-collapse:collapse</td>
+		</tr>
+	</table>
+	<table class="table2">
+		<tr>
+			<td>border-collapse:separate</td>
+		</tr>
+	</table>
+	<br>
+	<br>
+	<br>
+	<div class="semicircle stop"></div>
+	<div class="semicircle sright"></div>
+	<div class="semicircle sbottom"></div>
+	<div class="semicircle sleft"></div>
+	<br>
+	<br>
+	<br>
+	<div class="heartcircle htop"></div>
+	<div class="heartcircle hright"></div>
+	<div class="heartcircle hbottom"></div>
+	<div class="heartcircle hleft"></div>
+	<br>
+	<br>
+	<br>
+	<div class="quarterCircle qtop"></div>
+	<div class="quarterCircle qright"></div>
+	<div class="quarterCircle qbottom"></div>
+	<div class="quarterCircle qleft"></div>
+	<br>
+	<br>
+	<br>
+	<div class="oval hov"></div>
+	<div class="oval ver"></div>
+</body>
+</html>

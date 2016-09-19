@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+	<title>transform-3D</title>
+	<style>
+	body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td { margin:0; padding:0; }
+	.cube{	
+		width: 100px;
+		height: 100px;
+		margin: 50px auto;
+		line-height:100px;
+		font-size:30px;
+		transform-style: preserve-3d;/*必须设置在变形的父元素中，这个与overflow:hidden冲突*/	
+		transform:rotateX(-40deg) rotateY(40deg);
+		perspective:300px;
+		perspective-origin: top right;
+	}
+	.cube>div{
+		position:absolute;
+		width: 100px;
+		height: 100px;
+		background-color: rgba(255, 0, 0, 0.4);
+		border: 1px solid #fff;
+		color:#fff;
+		text-align:center;
+		line-height:100px;
+	}
+	.top{
+		transform:rotateX(90deg) translateZ(50px);
+	}
+	.bottom{
+		transform:rotateX(-90deg) translateZ(50px);
+	}
+	.front{
+		transform:translateZ(50px);
+	}
+	.back{
+		transform:rotateY(-180deg) translateZ(50px);
+	}
+	.left{
+		transform:rotateY(-90deg) translateZ(50px);
+	}
+	.right{
+		transform:rotateY(90deg) translateZ(50px);
+	}
+	</style>
+</head>
+<body>
+	<div class="cube">
+		<div class="top">top</div>
+		<div class="bottom">bottom</div>
+		<div class="right">right</div>
+		<div class="left">left</div>
+		<div class="back">back</div>
+		<div class="front">front</div>
+	</div>
+</body>
+<script type="text/javascript">
+	console.log("2D变形函数：rotate()、translate()、scale()、skew()");
+	console.log("3D变形函数：rotateX()、rotateY()、rotateZ()、rotate3d()、translateZ()、translate3d()、scaleZ()、scale3d()");
+</script>
+</html>

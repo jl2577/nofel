@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>跨浏览器三列布局</title>
+	<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	body{
+		/*设置为伸缩容器*/
+		display: -webkit-box;/*旧版本*/
+		display: -moz-box;/*旧版本*/
+		display: -ms-flexbox;/*混合版本*/
+		display: -webkit-flex;/*新版本*/
+		display: flex; /*标准版本*/
+		
+		/*伸缩项目换行*/
+		/*旧版本设置伸缩流*/
+		-webkit-box-orient:vertical;
+		-moz-box-orient:vertical;
+		-webkit-box-direction:normal;
+		-moz-box-direction:normal;
+		/*旧版本:伸缩项目换行*/
+		-webkit-box-line:multiple;
+		-moz-box-line:multiple;
+		-webkit-flex-flow:column wrap;
+		/*混合版本:伸缩流方向喻伸缩项目换行*/
+		-ms-flex-flow:column wrap;
+		/*最新版本*：伸缩流方向与伸缩项目换行*/
+		flex-flow:column wrap;
+	}
+	section{
+		display: -webkit-box;/*旧版本*/
+		display: -moz-box;/*旧版本*/
+		display: -ms-flexbox;/*混合版本*/
+		display: -webkit-flex;/*新版本*/
+		display: flex; /*标准版本*/
+
+		/*设置伸缩流方向*/
+		/*旧版本：设置伸缩流*/
+		-webkit-box-orient:horizontal;
+		-moz-box-orient:horizontal;
+		-webkit-box-direction:normal;
+		-moz-box-direction:normal;
+		/*旧版本:伸缩项目换行*/
+		-webkit-box-line:multiple;
+		-moz-box-line:multiple;
+		-webkit-flex-flow:row wrap;
+		/*混合版本:伸缩流方向喻伸缩项目换行*/
+		-ms-flex-flow:row wrap;
+		/*最新版本*：伸缩流方向与伸缩项目换行/
+		flex-flow:row wrap;
+
+		/*设置伸缩性*/
+		-webkit-box-flex:1;
+		-moz-box-flex:1;
+		-ms-box-flex:1;
+		-webkit-flex:1;
+		flex:1;
+
+		/*侧轴排列方式*/
+		-webkit-box-align:center;
+		-moz-box-align:center;
+		-ms-flex-align:center;
+		-webkit-align-items:center;
+		align-items:center;
+	}
+	article{
+		-webkit-box-flex:1;
+		-moz-box-flex:1;
+		-ms-box-flex:1;
+		-webkit-flex:1;
+		flex:1;
+
+		/*旧版本：重排列的顺序*/
+		-webkit-box-ordinal-group:2;
+		-moz-box-ordinal-group:2;
+		/*混合版本：重排列的顺序*/
+		-ms-flex-order:2;
+		/*新版本：重排列的顺序*/
+		-webkit-order:2;
+		order:2;
+	}
+
+	aside{
+		-webkit-box-ordinal-group:3;
+		-moz-box-ordinal-group:3;
+		-ms-flex-order:3;
+		-webkit-order:3;
+		order:3;
+	}
+	</style>
+</head>
+<body>
+	<header>我是页眉</header>
+	<section>
+		<article>我是主内容</article>
+		<nav>我是侧边栏导航</nav>
+		<aside>我是右边栏</aside>
+	</section>
+	<footer>我是页脚</footer>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>曲线阴影</title>
+	<style>
+	@charset "utf-8";
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	ul,li{
+		list-style-type: none;
+	}
+	h1{
+		text-align: center;
+		text-shadow:2px 1px 4px rgba(0,0,0,0.3),1px 2px 4px rgba(0,0,0,0.3);
+
+	}
+	.wrap{
+		position: relative;
+		width: 500px;
+		height: 200px;
+		line-height: 200px;
+		margin: 50px auto;
+		border: 1px solid #ccc;
+		background-color: #fff;
+		box-shadow: 0 0 2px rgba(0,0,0,0.5),0 0 40px rgba(0,0,0,0.2) inset;
+	}
+	.wrap::before,.wrap::after{
+		content: "";
+		z-index: -1;
+		position: absolute;
+		top:50%;
+		left: 20px;
+		right:20px;
+		bottom:0px;
+		background-color: transparent;
+		border-radius: 100px / 10px;
+		box-shadow: 0 0 40px rgba(0,0,0,0.5);
+	}
+	.imgbox{
+		position: relative;
+		width: 1180px;
+		height:240px;
+		margin: 50px auto;
+	}
+	.imgbox li{
+		position: relative;
+		float: left;
+		width: 350px;
+		height: 200px;
+		margin: 20px;
+		background-color: #fff;
+		border: 1px solid #ccc;
+		border-radius: 2px;
+		box-shadow: 0 0 4px rgba(0,0,0,0.2),0 0 40px rgba(0,0,0,0.2) inset;
+	}
+	.imgbox li::before{
+		content: "";
+		z-index: -1;
+		position: absolute;
+		background-color: transparent;
+		width: 90%;
+		height: 80%;
+		bottom: 14px;
+		right: 9px;
+		box-shadow: 0 0 40px rgba(0,0,0,0.7);
+		-webkit-transform: skew(-10deg) rotate(-5deg);
+		   -moz-transform: skew(-10deg) rotate(-5deg);
+		    -ms-transform: skew(-10deg) rotate(-5deg);
+		     -o-transform: skew(-10deg) rotate(-5deg);
+		        transform: skew(-10deg) rotate(-5deg);
+	}
+	.imgbox li::after{
+		content: "";
+		z-index: -1;
+		position: absolute;
+		background-color: transparent;
+		width: 90%;
+		height: 80%;
+		bottom: 14px;
+		left: 9px;
+		box-shadow: 0 0 40px rgba(0,0,0,0.7);
+		-webkit-transform: skew(10deg) rotate(5deg);
+		   -moz-transform: skew(10deg) rotate(5deg);
+		    -ms-transform: skew(10deg) rotate(5deg);
+		     -o-transform: skew(10deg) rotate(5deg);
+		        transform: skew(10deg) rotate(5deg);
+	}
+	img{
+		position: relative;
+		width: 330px;
+		height: 180px;
+		margin: 10px
+	}
+	*{
+		-webkit-user-select:none;
+	}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<h1>盒子底边有一段曲线阴影</h1>
+	</div>	
+	<ul class="imgbox">
+		<li><img src="img/1_1.jpg"></li>
+		<li><img src="img/1_2.jpg"></li>
+		<li><img src="img/1_3.jpg"></li>
+	</ul>
+</body>
+</html>

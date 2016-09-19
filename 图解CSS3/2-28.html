@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>nth-child与nth-of-type</title>
+	<style type="text/css">
+	.div1>p:nth-child(2){
+		color:red;
+	}
+	.div1>p:nth-of-type(2){
+		color:green;
+	}
+	
+	/*
+		nth-child与nth-of-type的区别
+		x:nth-child取的是父元素的第xx个子元素。若这个子元素与选择的元素与x元素不是一个类型。则此时没有效果。
+		x:nth-of-type先过滤掉父元素下的所有非x元素类型的其他子元素。进而再对第xx个元素进行设置。、
+
+		扩展：first-of-type可以替代nth-of-type(1);last-of-type可以替代nth-last-of-type(1)
+
+	 */
+	.div2>p:nth-child(2){
+		color:blue;
+	}
+	.div2>p:nth-of-type(2){
+		color:yellow;
+	}
+
+	/*选择时的背景色与前景色*/
+	::selection{
+		background-color: yellow;
+		color:pink;
+	}
+	</style>
+</head>
+<body>
+	<div class="div1">
+		<p>我是文章中的第一个段落</p>
+		<p>我是文章中的第二个段落</p>
+	</div>
+	<div class="div2">
+		<h2>我是插入的一个标题</h2>
+		<p>我是文章中的第三个段落</p>
+		<p>我是文章中的第四个段落</p>
+	</div>	
+</body>
+</html>

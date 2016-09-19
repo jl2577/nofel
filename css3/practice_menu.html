@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>practice_menu</title>
+	<script src="http://s0.qhimg.com/lib/jquery/183.js"></script>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	body{
+		background-color: #ccc;
+		font-family: "Microsoft Yahei";
+	}
+	h1{
+		margin-top: 50px;
+		text-align: center;
+		color:fff;
+	}
+	.nav_wrap{
+		width: 400px;
+		height: 400px;
+		position: relative;
+		margin: 50px auto;
+		background-color: #eee;	
+		border: 2px dotted #000;
+		border-radius: 100%;
+	}
+	.main_nav{
+		position:absolute;
+		top:50%;
+		left:50%;
+		width: 50px;
+		height: 50px;
+		line-height: 25px;
+		text-align: center;
+		font-size: 18px;
+		text-shadow:1px 1px 0 #000;
+		color:#fff;
+		cursor: pointer;
+		background-color: blue;
+		transform:translate(-50%,-50%);
+		border: 1px solid #ccc;
+		border-radius: 5px;8
+	}
+	.nav_item{
+		position: absolute;
+		width: 40px;
+		height: 40px;
+		background-color: #ffff00;
+		text-align: center;
+		line-height: 40px;
+		border: 2px solid #ffff00;
+		border-radius: 4px;
+		transform:translate(-50%,-50%);
+	}
+	.nav_wrap nav{
+		width: 100%;
+		height: 100%;
+		transform:scale(0);
+		/* border: 2px solid #000; */
+		opacity: 0;
+		transition:all 0.8s ease-out;
+	}
+	.nav_wrap.active nav{
+		transform:scale(1);
+		opacity: 1;
+	}
+	</style>
+</head>
+<body>
+	<h1>数学在css中的运用——菜单练习</h1>
+	<div class="nav_wrap">
+		<nav>
+			<a class="nav_item">1</a>
+			<a class="nav_item">2</a>
+			<a class="nav_item">3</a>
+			<a class="nav_item">4</a>
+			<a class="nav_item">5</a>
+			<a class="nav_item">6</a>
+			<a class="nav_item">7</a>
+			<a class="nav_item">8</a>
+			<a class="nav_item">9</a>
+			<a class="nav_item">10</a>
+			<a class="nav_item">11</a>
+			<a class="nav_item">12</a>
+		</nav>
+		<a class="main_nav">点我开始</a>
+	</div>
+	<script>
+	var flag = 0;
+	var nav_a = $('.nav_wrap').find('nav a');
+	$.each(nav_a, function(index, item) {
+		//圆半径
+		var r = $('.nav_wrap').width() / 2;
+		var sAngle = 0;
+		var eAngle = 360;
+		//相邻a标签之间的角度
+		var angle = (eAngle - sAngle) / nav_a.length;
+		//弧度
+		var radius = Math.PI / 180;
+
+		var top = r + r * Math.sin((index * angle - 60) * radius);
+		var left = r + r * Math.cos((index * angle - 60) * radius);
+
+		item.style.top = top + 'px';
+		item.style.left = left + 'px';
+	});
+	$('.main_nav').on('click', function() {
+		if (flag == 0) {
+			flag = 1;
+			$('.main_nav').html("点我暂停");
+		} else {
+			flag = 0;
+			$('.main_nav').html("点我开始");
+		}
+		//$('.nav_wrap').toggleClass('active');
+	})
+
+	setInterval(function() {
+		if (flag == 1) {
+			$('.nav_wrap').toggleClass('active');
+		}
+	}, 1000);
+	</script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3制作动画</title>
+	<style type="text/css">
+	html{
+		padding: 0px;
+		margin: 0px;
+	}
+	span{
+		display: block;
+		width: 100%;
+		height: 50px;
+		line-height: 50px;
+		text-align: center;
+		font-weight: bold;
+		font-size: 40px;
+		color:red;
+		text-shadow:2px 1px 5px green;
+	}
+	.head{
+		position: relative;
+		width: 420px;
+		height: 400px;
+		margin: 200px auto;
+		border: 10px solid #640606;
+		border-radius: 50%;
+	}
+	.eye{
+		position: absolute;
+		width: 40px;
+		height: 40px;
+		top:200px;
+		left: 100px;
+		border-radius: 50%;
+		background-color: #640606;
+		box-shadow: 200px 0 0 #640606;
+		transform:scale(1,1.1);
+		-webkit-animation: shine 1s infinite linear;
+				animation: shine 1s infinite linear;
+	}
+
+	@-webkit-keyframes shine{
+		
+		40%{
+			transform:scale(1,1.1);
+		}
+		45%{
+			transform:scale(1,0.2);	
+		}
+		55%{
+			transform:scale(1,0.2);	
+		}
+		60%{
+			transform:scale(1,1.1);
+		}
+
+	}
+	.face1{
+		position: absolute;
+		width: 30px;
+		height: 50px;
+		top: 230px;
+		left: 70px;
+		border-radius: 50%;
+		background-color: rgba(245, 68, 135, 1);
+		transform: rotate(-75deg);
+		-webkit-animation: fate 2s infinite linear;
+				animation: fate 2s infinite linear;
+	}
+	.face2{
+		position: absolute;
+		width: 30px;
+		height: 50px;
+		top: 230px;
+		left: 340px;
+		border-radius: 50%;
+		background-color: rgba(245, 68, 135, 1);
+		transform: rotate(75deg);
+		-webkit-animation: fate 2s infinite linear;
+				animation: fate 2s infinite linear;
+	}
+
+	@-webkit-keyframes fate{
+		50%{
+			opacity: 0.3;
+		}
+	}
+	.nose1{
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		top: 230px;
+		left: 215px;
+		border: 10px solid #640606;
+		border-top-color: transparent;
+		border-right-color: transparent;
+		border-radius: 50%;
+		transform: rotate(-65deg);
+	}
+	.nose2{
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		top: 230px;
+		left: 175px;
+		border: 10px solid #640606;
+		border-top-color: transparent;
+		border-right-color: transparent;
+		border-radius: 50%;
+		transform: rotate(-24deg);
+	}
+	.circle{
+		position: absolute;
+		width: 11px;
+		height: 11px;
+		top: 255px;
+		left: 214px;
+		background-color: #640606;
+		border-radius: 50%;
+		box-shadow: 40px -10px 0 #640606,-40px -10px 0 #640606;
+	}
+	.eyebrow1{
+		position: absolute;
+		width: 50px;
+		height: 8px;
+		top: 180px;
+		left: 110px;
+		background-color: #640606;
+		border-radius: 4px;
+		transform-origin: right center;
+		transform: rotate(40deg);
+		-webkit-animation: left .5s infinite linear;
+				animation: left .5s infinite linear;
+	}
+	.eyebrow2{
+		position: absolute;
+		width: 50px;
+		height: 8px;
+		top: 180px;
+		left: 280px;
+		background-color: #640606;
+		border-radius: 4px;
+		transform-origin: left center;
+		transform: rotate(-40deg);
+		-webkit-animation: right .5s infinite linear;
+				animation: right .5s infinite linear;
+	}
+
+	@-webkit-keyframes left{
+		50%{
+			transform: rotate(20deg);
+		}
+	}
+	@-webkit-keyframes right{
+		50%{
+			transform: rotate(-20deg);
+		}
+	}
+
+	.plantroot{
+		position: absolute;
+		top: 20px;
+		left: 0px;
+		width: 80px;
+		height: 20px;
+		border: 10px solid #640606;
+		border-radius: 61% 90%;
+		border-left-color: transparent;
+		border-bottom-color: transparent;
+		transform: rotate(30deg);
+		transform-origin: right center;
+		-webkit-animation: move .5s infinite linear;
+				animation: move .5s infinite linear;
+	}
+	
+	@-webkit-keyframes move{
+		50%{
+			transform:rotate(20deg);
+		}
+	}
+
+	.plantroot::before{
+		position: absolute;
+		content: '';
+		top: -95px;
+		left: -65px;
+		width: 80px;
+		height: 60px;
+		border: 10px solid #640606;
+		background-color: green;
+		border-radius: 30% 70% 60% 40% / 50% 80% 20% 50%;
+		transform: rotate(40deg);
+	}
+	.plantroot::after{
+		position: absolute;
+		content: '';
+		top: -19px;
+		left: -98px;
+		width: 80px;
+		height: 60px;
+		border: 10px solid #640606;
+		background-color: green;
+		border-radius: 30% 70% 60% 40% / 50% 80% 20% 50%;
+		transform: rotate(-50deg);
+	}
+	
+	</style>
+</head>
+<body>
+	<span>CSS3制作动画--萌萌哒</span>
+	<div class="head">
+		<div class="eye"></div>
+		<div class="face1"></div>
+		<div class="face2"></div>
+		<div class="nose1"></div>
+		<div class="nose2"></div>
+		<div class="circle"></div>
+		<div class="eyebrow1"></div>
+		<div class="eyebrow2"></div>
+		<div class="flower"></div>
+
+		<div class="plant">
+			<div class="plantroot"></div>
+		</div>
+	</div>
+</body>
+</html>

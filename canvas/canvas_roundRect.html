@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas绘制圆角矩形</title>
+</head>
+<body>
+	<canvas id="canvas" style="display: block;margin: 20px auto;border:1px solid #ccc;"></canvas>
+</body>
+<script type="text/javascript">
+	window.onload=function(){
+		var canvas=document.getElementById('canvas');
+		var WIDTH=1000;
+		var HEIGHT=600;
+		canvas.width=WIDTH;
+		canvas.height=HEIGHT;
+		var colors=['gold','yellow'];
+		if(canvas){
+			var context=canvas.getContext('2d');
+			roundRect(context, 100 , 100 , 600 , 400 , 50);
+			
+		}else{
+			console.log('浏览器不支持canvas，请更新浏览器！')
+		}
+
+	}
+
+	function roundRect(ctx , x , y , width , height , radius){
+		if(2*radius > width || 2*radius >height){
+			return ;
+		}
+		ctx.save();
+		ctx.translate(x,y);
+		pathRoundRect(ctx , width , height , radius);
+		ctx.strokeStyle='red';
+		ctx.stroke();
+		ctx.restore();
+	}
+
+	function pathRoundRect(ctx , width , height , radius){
+		ctx.beginPath();
+		ctx.arc(radius , radius , radius , Math.PI , Math.PI*3/2);
+		ctx.lineTo(width-radius , 0);
+		ctx.arc(width-radius , radius , radius , Math.PI*3/2 , Math.PI*2);
+		ctx.lineTo(width , height-radius);
+		ctx.arc(width-radius , height-radius , radius , 0 , Math.PI/2);
+		ctx.lineTo(radius , height);
+		ctx.arc(radius , height-radius , radius , Math.PI/2 , Math.PI);
+		ctx.lineTo(0 , radius);
+		ctx.closePath();
+	}		
+</script>
+</html>

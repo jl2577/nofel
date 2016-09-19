@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=1.0,user-sacable=0">
+	<title>渐变字体</title>
+	<style>
+	body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td { margin:0; padding:0; }
+	.gradient-text{
+		width: 200px;
+		height: 80px;
+		margin:50px auto;
+		text-align:center;
+		line-height: 80px;
+		font-size:40px;
+		background-image: -webkit-linear-gradient(to right,red,green);
+		background-image: -webkit-gradient(linear,0 0, right 0, from(red), to(green));
+		background-image: -moz-linear-gradient(to right,red,green);
+		background-image: linear-gradient(to right,red,green);
+		font-weight: bolder;
+		-webkit-background-clip:text;
+		-webkit-text-fill-color: transparent;
+		
+	}
+	</style>
+</head>
+<body>
+	<div class="gradient-text">渐变字体</div>
+</body>
+</html>

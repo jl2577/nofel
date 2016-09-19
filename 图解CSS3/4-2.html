@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>background-origin使用方法</title>
+	<style type="text/css">
+	.padding-box{
+		width: 300px;
+		height: 200px;
+		border: 20px dashed rgba(0,0,0,0.3);
+		background: orange url(../img/1_1.jpg) no-repeat left top;
+		padding: 20px;
+		margin: 30px;
+		background-origin: padding-box;
+		-webkit-background-origin: padding-box;
+		-moz-background-origin: padding-box;
+		-ms-background-origin: padding-box;
+		-o-background-origin: padding-box;
+		background-attachment: fixed;
+		-webkit-background-attachment: fixed;
+		-moz-background-attachment: fixed;
+		-ms-background-attachment: fixed;
+		-o-background-attachment: fixed;
+	}
+	.bgd{
+		width: 300px;
+		height: 100px;
+		border: 50px dashed rgba(0,0,0,0.8);
+		margin: 20px;
+		padding: 20px;
+		background: rgba(0,25,25,0.8) url(../img/1_1.jpg) no-repeat;
+	}
+
+	.no-repeat{
+		background-repeat: no-repeat;
+	}
+	.repeat{
+		background-repeat: repeat;
+	}
+	.text{
+		width: 350px;
+		background: orange url(../img/1_1.jpg);
+		padding: 20px;
+		color: #fff;
+		font-size: 60px;
+		font-weight: bold;
+		-webkit-background-clip:text;
+		-webkit-text-fill-color:transparent;
+	}
+	.background-size{
+		width: 500px;
+		height: 300px;
+		border: 1px solid #ccc;
+		background: url(../img/1_1.jpg) no-repeat;
+		background-size: auto;
+		opacity: 0.6;
+	}
+	</style>
+</head>
+<body>
+	<div class="padding-box"></div>
+	<br>
+	<br>
+	<div class="bgd no-repeat"></div>
+	<div class="bgd repeat"></div>
+	<br>
+	<br>
+	<div class="text">背景图片填充文本效果<br/>BACKGROUND</div>
+	<br>
+	<br>
+	<br>
+	<div class="background-size">我是文本</div>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>时钟练习</title>
+<meta name="viewport"content="width=device-width,initial-scale=1.0,max-scale=1.0,user-sacable=0">
+<script type="text/javascript"src="https://ss0.bdstatic.com/5a21bjqh_Q23odCf/static/superplus/js/lib/jquery-1.10.2_d88366fd.js"></script>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #ccc;
+  font-family: "Microsoft Yahei";
+}
+h1 {
+  margin: 50px auto;
+  text-align: center;
+}
+li {
+  list-style-type: none;
+}
+.clock {
+  position: relative;
+  width: 300px;
+  height: 300px;                   /* border: 3px solid #000; */
+  background-color: #000;
+  border-radius: 100%;
+  margin: 50px auto;
+}
+.clock .pointer .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+  background-color: yellow;
+  -webkit-transform: translate(-50%, -50%);
+     -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+       -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+     -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+       -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+}
+.number li {
+  position: absolute;
+  color: red;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  -webkit-transform: translate(-50%, -50%);
+     -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+       -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+}
+.hour_line li {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 4px;
+  background-color: blue;                   /* 旋转基点 */
+  -webkit-transform-origin: 0 0;
+     -moz-transform-origin: 0 0;
+      -ms-transform-origin: 0 0;
+       -o-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: rotate(00deg) translate(0px, -50%);
+     -moz-transform: rotate(00deg) translate(0px, -50%);
+      -ms-transform: rotate(00deg) translate(0px, -50%);
+       -o-transform: rotate(00deg) translate(0px, -50%);
+          transform: rotate(00deg) translate(0px, -50%);
+}
+
+/* .hour_line li.test{
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 20px;
+          height: 4px;
+          background-color: blue;
+          旋转基点
+          transform-origin: 0 50%;
+          -webkit-transform: rotate(90deg) translate(0px,-50%);
+             -moz-transform: rotate(90deg) translate(0px,-50%);
+              -ms-transform: rotate(90deg) translate(0px,-50%);
+               -o-transform: rotate(90deg) translate(0px,-50%);
+                  transform: rotate(90deg) translate(0px,-50%);
+} */
+.min_line li {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 4px;
+  background-color: blue;                   /* 旋转基点 */
+  -webkit-transform-origin: 0 0;
+     -moz-transform-origin: 0 0;
+   -50-ms-transform-origin: 0 0;
+       -o-transform-origin: 0 0;
+          transform-origin: 0 0;
+}
+.pointer li {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-color: yellow;
+  -webkit-transform: translate(0%, -50%);
+     -moz-transform: translate(0%, -50%);
+      -ms-transform: translate(0%, -50%);
+       -o-transform: translate(0%, -50%);
+          transform: translate(0%, -50%);                   /* 旋转基点 */
+  -webkit-transform-origin: left center;
+     -moz-transform-origin: left center;
+      -ms-transform-origin: left center;
+       -o-transform-origin: left center;
+          transform-origin: left center;
+}
+.pointer li.hour {
+  width: 70px;
+  height: 4px;
+}
+.pointer li.min {
+  width: 100px;
+  height: 3px;
+}
+.pointer li.sec {
+  /*  -webkit-transition: all 1s linear;
+    -moz-transition: all 1s linear;
+     -ms-transition: all 1s linear;
+      -o-transition: all 1s linear;
+         transition: all 1s linear;  */
+  width: 130px;
+  height: 2px;
+}
+
+/*.pointer li.hourturn{
+     -webkit-transform: rotate(60deg);
+        -moz-transform: rotate(60deg);
+         -ms-transform: rotate(60deg);
+          -o-transform: rotate(60deg);
+             transform: rotate(60deg);
+} */
+</style>
+</head>
+<body>
+<h1>css3时钟练习</h1>
+<div class="clock">
+  <ul class="hour_line">
+  <!-- <li></li>
+  <li class="test"></li> -->
+  </ul>
+  <ul class="min_line"></ul>
+  <ul class="number"></ul>
+  <ul class="pointer"style="display:none;">
+    <li class="hour"></li>
+    <!-- <li class="hourturn"></li> -->
+    <li class="min"></li>
+    <li class="sec"></li>
+    <li class="circle"></li>
+  </ul>
+</div>
+<script>
+function drawNum(wrap) {
+  var radius = wrap.width() / 2;
+  var strHtml = '';
+  for (var i = 1; i <= 12;i++) {
+    var myAngle = (i - 3) / 6 * Math.PI;
+    var myX = radius + radius * Math.cos(myAngle);// x=r+rcos(θ)
+    var myY = radius + radius * Math.sin(myAngle);// y=r+rsin(θ)
+    strHtml += '<li style="left:' + myX + 'px; top:' + myY + 'px">' + i + '</li>';
+  }
+  wrap.html(strHtml);
+}
+
+function drawuLine(wrap, translate, num) {
+  var strHtml = '';
+  var deg = 360 / num;
+  for (var i = 1; i <= num; i++) {
+    strHtml += '<li style="' +
+      '-webkit-transform: rotate(' + i * deg + 'deg) translate(' + translate + 'px, -50%);' +
+      '-moz-transform: rotate(' + i * deg + 'deg) translate(' + translate + 'px, -50%);' +
+      '-ms-transform: rotate(' + i * deg + 'deg) translate(' + translate + 'px, -50%);' +
+      '-o-transform: rotate(' + i * deg + 'deg) translate(' + translate + 'px, -50%);' +
+      'transform: rotate(' + i * deg + 'deg) translate(' + translate + 'px, -50%);"</li>';
+  }
+  wrap.html(strHtml);
+}
+
+function turn() {
+  var time = new Date();
+  var h = time.getHours();
+  var m = time.getMinutes();
+  var s = time.getSeconds();
+  $('.sec').css("transform", "rotate(" + (s * 6 - 90) + "deg)");
+  $('.min').css("transform", "rotate(" + ((m + s / 60) * 6 - 90) + "deg)");
+  $('.hour').css("transform", "rotate(" + ((h + m / 60 + s / 3600) * 30 - 90) + "deg)");
+}
+
+function go() {
+  turn();
+  setInterval(function() {
+    turn();
+  }, 1000);
+  $('.pointer').show();
+}
+
+function start() {
+  go();
+  drawuLine($('.hour_line'), 125, 12);
+  drawuLine($('.min_line'), 135, 60);
+  drawNum($('.number'));
+}
+start();
+</script>
+</body>
+</html>

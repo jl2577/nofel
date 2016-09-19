@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多列布局</title>
+	<style type="text/css">
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	.wrapper{
+		width: 40em;
+		margin-left: auto;
+		margin-right: auto;
+		border: 1px solid #ccc;
+		padding: 5px;
+		/*多列布局*/
+		/* -moz-columns:9em 4;
+		-webkit-columns:9em 4;
+		columns:9em 4; */
+		-moz-column-count:4;
+		-webkit-column-count:4;
+		column-count:4;
+		-moz-column-gap:2em;
+		-webkit-column-gap:2em;
+		column-gap:2em;
+		-moz-column-rule:2.1px dashed #ccc;
+		-webkit-column-rule:2.1px dashed #ccc;
+		column-rule:2.1px dashed #ccc;
+		
+	}
+	h1{	
+		text-align: center;
+		font-size: 1.5em;
+		margin-bottom: 1em;
+		-webkit-column-span:all;
+		-moz-column-span:all;
+		column-span:all;
+	}
+	p{
+		margin-bottom: 1em;
+		text-indent: 2em;
+		line-height: 1.625;
+		font-size: .7em;
+	}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>金融时报：微软能否拯救windows 8？</h1>
+		<p>对象是一种复合值，它将很多值（原始值或其他对象）聚合在一起，可通过属性名访问这些值。而属性名可以是包含空字符串在内的任意字符串。JavaScript对象也可以称作一种数据结构，正如我们经常听说的“散列（hash）”、“散列表（hashtable）”、“字典（dictionary）”、“关联数组（associative array）”。</p>
+		<h3>微软能否拯救windows 8?</h3>
+		<p>既然学习对象，又怎能不懂如何创建对象呢？面试前端岗位的同学，可能都被问过这个基础问题吧：
+　　创建JavaScript对象的两种方法是什么？（或者：说说创建JavaScript对象的方法？）
+　　这个问题我就被问过两次。“创建对象的两种方法”这种说法网上有很多，但是据我所看书籍来说是有三种方法的！下面我们就来具体谈谈这三种方法：</p>
+		<p>对象直接量由若干名/值对组成的映射表，名/值对中间用冒号分隔，名/值对之间用逗号分隔，整个映射表用花括号括起来。属性名可以是JavaScript标识符也可以是字符串直接量，也就是说下面两种创建对象obj的写法是完全一样的</p>
+		<p>ECMAScript5定义了一个名为Object.create()的方法，它创建一个新对象，其中第一个参数是这个对象的原型对象（好像还没解释原型对象...下面马上就说），第二个可选参数用以对对象的属性进行进一步的描述，第二个参数下面再说（因为这第三种方法是ECMAScript5中定义的，所以以前大家才经常说创建对象的两种方法的吧？个人觉得应该是这个原因）。这个方法使用很简单</p>
+		<p>为了解释为啥这三种方式是完全一样的，我们先来解释下JavaScript中的原型对象（哎，让客官久等了！），记得一位大神说过</p>
+		<p>面向对象的编程语言JavaScript，没有类！！！那么，它是怎么实现继承的呢？没错，就是通过原型对象。基本上每一个JavaScript对象（null除外）都和另一个对象相关联，“另一个”对象就是所谓的原型对象（原型对象也可以简称为原型，并没有想象的那么复杂，它也只是一个对象而已）。。</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=1.0,user-sacable=0">
+	<title>将容器设置为伸缩容器</title>
+	<style type="text/css">
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	body>div{
+		border: 1px solid #ccc;
+		margin: 20px;
+		padding: 10px;
+	}
+	div>div{
+		border: 1px solid #f36;
+		width: 25%;
+		height: 80px;
+		text-align: center;
+		line-height: 80px;
+		box-sizing:border-box;
+		display: block;
+		flex:1;
+	}
+	.box{
+		display: -moz-box;
+		display: -webkit-box;
+		display: box;
+	}
+	.inline-box{
+		display: -moz-inline-box;
+		display: -webkit-inline-box;
+		display: inline-box;
+	}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div>A</div>
+		<div>B</div>
+		<div>C</div>
+		<div>D</div>
+	</div>
+	<div class="inline-box">
+		<div>A</div>
+		<div>B</div>
+		<div>C</div>
+		<div>D</div>
+	</div>
+</body>
+</html>

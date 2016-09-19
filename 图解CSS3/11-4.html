@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>perspective-origin的使用</title>
+	<style type="text/css">
+	.wrapper{
+		width: 30%;
+		display: inline-block;
+		padding-bottom: 50px;
+	}
+	.cube{
+		width: 100px;
+		height: 100px;
+		line-height: 100px;
+		margin: 50px auto;
+		transform-style:preserve-3d;
+		perspective:200px;
+		font-size: 30px;
+	}
+	.cube>div{
+		position:absolute;
+		width: 100px;
+		height: 100px;
+		background-color: rgba(255, 0, 0, 0.4);
+		border: 1px solid #fff;
+		color:#fff;
+		text-align:center;
+		line-height:100px;
+	}
+	.top{
+		transform:rotateX(90deg) translateZ(50px);
+	}
+	.bottom{
+		transform:rotateX(-90deg) translateZ(50px);
+	}
+	.front{
+		transform:translateZ(50px);
+	}
+	.back{
+		transform:rotateY(-180deg) translateZ(50px);
+	}
+	.left{
+		transform:rotateY(-90deg) translateZ(50px);
+	}
+	.right{
+		transform:rotateY(90deg) translateZ(50px);
+	}
+
+	.w1 .cube{
+		perspective-origin:top left;
+	}
+	.w2 .cube{
+		perspective-origin:top;
+	}
+	.w3 .cube{
+		perspective-origin:top riht;
+	}
+	.w4 .cube{
+		perspective-origin:left;
+	}
+	.w5 .cube{
+		perspective-origin:center;
+	}
+	.w6 .cube{
+		perspective-origin:right;
+	}
+	.w7 .cube{
+		perspective-origin:bottom left;
+	}
+	.w8 .cube{
+		perspective-origin:bottom;
+	}
+	.w9 .cube{
+		perspective-origin:bottom right;
+	}
+	.w5 .cube div{
+		backface-visibility:hidden;
+	}
+	</style>
+</head>
+<body>
+	<div class="wrapper w1">
+		<div class="cube">
+			<div class="side front">1</div>
+			<div class="side back">6</div>
+			<div class="side right">4</div>
+			<div class="side left">3</div>
+			<div class="side top">5</div>
+			<div class="side bottom">2</div>
+		</div>
+	</div>
+	<div class="wrapper w2">
+		<div class="cube">
+			<div class="side front">1</div>
+			<div class="side back">6</div>
+			<div class="side right">4</div>
+			<div class="side left">3</div>
+			<div class="side top">5</div>
+			<div class="side bottom">2</div>
+		</div>
+	</div>
+	<div class="wrapper w3">
+		<div class="cube">
+			<div class="side front">1</div>
+			<div class="side back">6</div>
+			<div class="side right">4</div>
+			<div class="side left">3</div>
+			<div class="side top">5</div>
+			<div class="side bottom">2</div>
+		</div>
+	</div>
+	<div class="wrapper w4">
+		<div class="cube">
+			<div class="side front">1</div>
+			<div class="side back">6</div>
+			<div class="side right">4</div>
+			<div class="side left">3</div>
+			<div class="side top">5</div>
+			<div class="side bottom">2</div>
+		</div>
+	</div>
+	<div class="wrapper w5">
+		<div class="cube">
+			<div class="side front">1</div>
+			<div class="side back">6</div>
+			<div class="side right">4</div>
+			<div class="side left">3</div>
+			<div class="side top">5</div>
+			<div class="side bottom">2</div>
+		</div>
+	</div>
+	<div class="wrapper w6">
+		<div class="cube">
+			<div class="side front">1</div>
+			<div class="side back">6</div>
+			<div class="side right">4</div>
+			<div class="side left">3</div>
+			<div class="side top">5</div>
+			<div class="side bottom">2</div>
+		</div>
+	</div>
+	<div class="wrapper w7">
+		<div class="cube">
+			<div class="side front">1</div>
+			<div class="side back">6</div>
+			<div class="side right">4</div>
+			<div class="side left">3</div>
+			<div class="side top">5</div>
+			<div class="side bottom">2</div>
+		</div>
+	</div>
+	<div class="wrapper w8">
+		<div class="cube">
+			<div class="side front">1</div>
+			<div class="side back">6</div>
+			<div class="side right">4</div>
+			<div class="side left">3</div>
+			<div class="side top">5</div>
+			<div class="side bottom">2</div>
+		</div>
+	</div>
+	<div class="wrapper w9">
+		<div class="cube">
+			<div class="side front">1</div>
+			<div class="side back">6</div>
+			<div class="side right">4</div>
+			<div class="side left">3</div>
+			<div class="side top">5</div>
+			<div class="side bottom">2</div>
+		</div>
+	</div>
+</body>
+</html>
