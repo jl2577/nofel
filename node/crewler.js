@@ -20,7 +20,7 @@ function filterChapters(html){
 			var id=video.attr('href').split('video/')[1];
 			chapterData.videos.push({
 				title:videoTitle,
-				id,id
+				id:id
 			})
 		});
 		courseData.push(chapterData);
